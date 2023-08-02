@@ -1,0 +1,61 @@
+<querys>
+    <insert_querys insert="insert_query">
+        <on_duplicate_key_update_notice>
+            INSERT INTO tpn_public_notice (
+                `pn_num`, `pn_date`, `pn_title`, `pn_method`,
+                `pn_institution_name`, `pn_url`, `pn_insert_ts`, `pn_update_ts`, `pn_price`, `pn_bid_start_ts`, `pn_bid_end_ts`, `pn_open_ts`, `pn_visible`
+            )
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ON
+            DUPLICATE KEY UPDATE
+            pn_date = %s,
+            pn_title = %s,
+            pn_method = %s,
+            pn_institution_name = %s,
+            pn_url = %s,
+            pn_update_ts = %s,
+            pn_price = %s,
+            pn_bid_start_ts = %s,
+            pn_bid_end_ts = %s,
+            pn_open_ts = %s,
+            pn_visible = %s
+        </on_duplicate_key_update_notice>
+
+        <on_duplicate_key_update_contract>
+            INSERT INTO tc_contract (
+                `c_num`, `c_date`, `c_title`, `c_method`,
+                `c_institution_name`, `c_url`, `c_insert_ts`, `c_update_ts`, `c_price`,
+                `c_company_name`, `c_chief`, `c_phone`
+            )
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ON
+            DUPLICATE KEY UPDATE
+            c_date = %s,
+            c_title = %s,
+            c_method = %s,
+            c_institution_name = %s,
+            c_url = %s,
+            c_update_ts = %s,
+            c_price = %s,
+            c_company_name = %s,
+            c_chief = %s,
+            c_phone = %s
+        </on_duplicate_key_update_contract>
+
+        <on_duplicate_key_update_company>
+            INSERT INTO tco_company (
+                `co_regist_num`, `co_company_name`, `co_ceo_name`, `co_division`, `co_region`,
+                `co_manufacturing`, `co_post`, `co_phone`, `co_fax`, `co_national`, `co_insert_ts`, `co_update_ts`
+            )
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ON
+            DUPLICATE KEY UPDATE
+            co_company_name = %s,
+            co_ceo_name = %s,
+            co_division = %s,
+            co_region = %s,
+            co_manufacturing = %s,
+            co_post = %s,
+            co_phone = %s,
+            co_fax = %s,
+            co_national = %s,
+            co_update_ts = %s
+        </on_duplicate_key_update_company>
+</querys>
